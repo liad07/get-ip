@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>get ip</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+<center><h1>ur ip:<span id="ip">searching</span></h1>
+</center>
+<script>
+    $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
+        var ip=JSON.stringify(data, null, 2);
+        ip=ip.replaceAll("}","")
+        ip=ip.replaceAll('"',"")
+        ip=ip.replaceAll('{',"")
+        ip=ip.replaceAll('ip:',"")
+
+        document.getElementById("ip").textContent=ip;
+    //    alert(JSON.stringify(data, null, 2));
+});</script>
+</body>
+</html>
